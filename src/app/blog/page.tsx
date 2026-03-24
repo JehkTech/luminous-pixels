@@ -1,28 +1,26 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import { client } from "@/lib/sanity";
-import { blogPostsQuery } from "@/lib/queries";
 import { formatDate } from "@/lib/utils";
+import { getBlogPosts } from "@/server/content/service";
 import type { BlogPost } from "@/types";
 
 export const metadata: Metadata = {
-  title: "Blog — AI Automation Insights",
+  title: "Blog - AI Automation Insights",
   description:
     "Practical guides, case studies, and industry insights on AI automation for service businesses.",
 };
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 3600;
 
 export default async function BlogPage() {
-  const posts: BlogPost[] = await client.fetch(blogPostsQuery);
+  const posts: BlogPost[] = await getBlogPosts();
 
   return (
     <>
       <Navbar />
       <main style={{ paddingTop: "80px" }}>
-        {/* Header */}
         <section
           className="section-padding"
           style={{ borderBottom: "1px solid var(--border)" }}
@@ -64,7 +62,6 @@ export default async function BlogPage() {
           </div>
         </section>
 
-        {/* Posts grid */}
         <section className="section-padding">
           <div className="container-lg">
             {posts.length === 0 ? (
@@ -98,19 +95,7 @@ export default async function BlogPage() {
                         display: "flex",
                         flexDirection: "column",
                       }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.borderColor = "var(--border-brand)";
-                        e.currentTarget.style.transform = "translateY(-3px)";
-                        e.currentTarget.style.boxShadow =
-                          "0 12px 40px rgba(0,0,0,0.1)";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.borderColor = "var(--border)";
-                        e.currentTarget.style.transform = "translateY(0)";
-                        e.currentTarget.style.boxShadow = "none";
-                      }}
                     >
-                      {/* Cover image placeholder */}
                       {post.coverImageUrl ? (
                         <div
                           style={{
@@ -206,3 +191,4 @@ export default async function BlogPage() {
     </>
   );
 }
+

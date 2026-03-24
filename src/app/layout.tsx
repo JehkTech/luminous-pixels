@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Syne, DM_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -15,12 +15,15 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
+  ),
   title: {
-    default: "Luminous Pixels Agency — AI Automation for Service Businesses",
+    default: "Luminous Pixels Agency - AI Automation for Service Businesses",
     template: "%s | Luminous Pixels Agency",
   },
   description:
-    "We build AI automation systems that eliminate repetitive work and scale your service business — in real estate, healthcare, e-commerce, and finance.",
+    "We build AI automation systems that eliminate repetitive work and scale your service business - in real estate, healthcare, e-commerce, and finance.",
   keywords: [
     "AI automation",
     "AI consulting",
@@ -38,7 +41,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://luminouspixels.agency",
     siteName: "Luminous Pixels Agency",
-    title: "Luminous Pixels Agency — AI Automation for Service Businesses",
+    title: "Luminous Pixels Agency - AI Automation for Service Businesses",
     description:
       "We build AI automation systems that eliminate repetitive work and scale your service business.",
     images: [
@@ -52,7 +55,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Luminous Pixels Agency — AI Automation",
+    title: "Luminous Pixels Agency - AI Automation",
     description: "AI automation systems for service businesses worldwide.",
     images: ["/og-image.png"],
   },
@@ -82,3 +85,4 @@ export default function RootLayout({
     </html>
   );
 }
+

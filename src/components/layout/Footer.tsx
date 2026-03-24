@@ -1,3 +1,5 @@
+﻿"use client";
+
 import Link from "next/link";
 
 const nav = {
@@ -39,7 +41,6 @@ export default function Footer() {
             marginBottom: "3rem",
           }}
         >
-          {/* Brand column */}
           <div>
             <div
               style={{
@@ -96,7 +97,6 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Nav columns */}
           {Object.entries(nav).map(([title, links]) => (
             <div key={title}>
               <h4
@@ -112,7 +112,14 @@ export default function Footer() {
               >
                 {title}
               </h4>
-              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.625rem" }}>
+              <ul
+                style={{
+                  listStyle: "none",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "0.625rem",
+                }}
+              >
                 {links.map((l) => (
                   <li key={l.href}>
                     <Link
@@ -139,7 +146,6 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom bar */}
         <div
           style={{
             borderTop: "1px solid var(--border)",
@@ -180,3 +186,4 @@ export default function Footer() {
     </footer>
   );
 }
+

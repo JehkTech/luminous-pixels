@@ -1,6 +1,5 @@
-import { defineConfig } from "sanity";
+﻿import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
-import { visionTool } from "@sanity/vision";
 import { blogPost } from "./schemas/blog";
 import { caseStudy } from "./schemas/caseStudy";
 
@@ -24,9 +23,9 @@ export default defineConfig({
               .child(S.documentTypeList("caseStudy")),
           ]),
     }),
-    visionTool(),
   ],
   schema: {
     types: [blogPost, caseStudy],
   },
 });
+
